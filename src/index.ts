@@ -386,11 +386,6 @@ function activateCellVim(app: JupyterLab, tracker: INotebookTracker): Promise<vo
         });
         commands.addKeyBinding({
             selector: '.jp-Notebook.jp-mod-editMode',
-            keys: ['Ctrl O', 'Y'],
-            command: 'copy-cell-and-edit'
-        });
-        commands.addKeyBinding({
-            selector: '.jp-Notebook.jp-mod-editMode',
             keys: ['Ctrl O', 'P'],
             command: 'paste-cell-and-edit'
         });
@@ -461,6 +456,11 @@ function activateCellVim(app: JupyterLab, tracker: INotebookTracker): Promise<vo
             command: 'notebook:enter-command-mode'
         });
         commands.addKeyBinding({
+            selector: '.jp-Notebook.jp-mod-editMode',
+            keys: ['Ctrl ]'],
+            command: 'notebook:exit-command-mode'
+        });
+        commands.addKeyBinding({
             selector: '.jp-Notebook:focus',
             keys: ['Shift M'],
             command: 'merge-and-edit'
@@ -499,11 +499,6 @@ function activateCellVim(app: JupyterLab, tracker: INotebookTracker): Promise<vo
             selector: '.jp-Notebook:focus',
             keys: ['Shift G'],
             command: 'select-last-cell'
-        });
-        commands.addKeyBinding({
-            selector: '.jp-Notebook:focus',
-            keys: ['Y', 'Y'],
-            command: 'notebook:copy-cell'
         });
         commands.addKeyBinding({
             selector: '.jp-Notebook:focus',
@@ -547,6 +542,16 @@ function activateCellVim(app: JupyterLab, tracker: INotebookTracker): Promise<vo
         });
         commands.addKeyBinding({
             selector: '.jp-Notebook:focus',
+            keys: ['Alt J'],
+            command: 'notebook:move-cell-down'
+        });
+        commands.addKeyBinding({
+            selector: '.jp-Notebook:focus',
+            keys: ['Alt K'],
+            command: 'notebook:move-cell-up'
+        });
+        commands.addKeyBinding({
+            selector: '.jp-Notebook:focus',
             keys: ['Z', 'Z'],
             command: 'center-cell'
         });
@@ -560,6 +565,18 @@ function activateCellVim(app: JupyterLab, tracker: INotebookTracker): Promise<vo
             keys: ['Ctrl G'],
             command: 'tooltip:launch-notebook'
         });
+        /*
+        commands.addKeyBinding({
+            selector: '.jp-Notebook:focus',
+            keys: ['Y', 'Y'],
+            command: 'notebook:copy-cell'
+        });
+        commands.addKeyBinding({
+            selector: '.jp-Notebook.jp-mod-editMode',
+            keys: ['Ctrl O', 'Y'],
+            command: 'copy-cell-and-edit'
+        });
+        */
 
         // tslint:disable:no-unused-expression
         new VimCell(app, tracker);
